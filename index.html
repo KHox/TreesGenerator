@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree-Selector</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            display: flex;
+        }
+        canvas {
+            width: calc(100vw - 500px);
+            height: 100vh;
+        }
+        #controll-panel {
+            background-color: #413e52;
+            width: 500px;
+            height: 100vh;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .button {
+            padding: 10px;
+            background-color: gray;
+            border-radius: 15px;
+            border: 3px solid black;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .button:hover {
+            background-color: #4b4b4b;
+        }
+
+        .horizontal {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .horizontal > * {
+            margin: auto
+        }
+
+        #gen {
+            text-align: center;
+        }
+
+        #gen td {
+            padding: 0;
+            border: 1px solid;
+        }
+
+        #gen tr:first-child td {
+            border: 0;
+        }
+
+        #gen td:first-child {
+            border: 0;
+            text-align: right;
+        }
+        
+        #gen .horizontal span {
+            margin: 0;
+        }
+        
+        #gen .horizontal span:first-child {
+            margin-left: auto;
+            margin-right: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        #gen .btn {
+            width: 6px;
+            height: 6px;
+            cursor: pointer;
+            background-color: rgb(48, 44, 51);
+            color: white;
+        }
+
+        #gen .btn.rand {
+            margin-top: 1px;
+            margin-bottom: 1px;
+        }
+
+        #gen input::-webkit-outer-spin-button,
+        #gen input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        #gen input {
+            box-sizing: border-box;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            width: 23px;
+            height: 100%;
+            text-align: right;
+        }
+
+        .toggler {
+            width: 10px;
+            height: 10px;
+            background-color: lime;
+            display: inline-block;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        tr.toggled .toggler {
+            background-color: red;
+        }
+
+        tr.toggled {
+            color: gray;
+        }
+
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <div id="controll-panel">
+        <table id="gen"></table>
+        <div class="horizontal">
+            <div class="button randomize">randomize</div>
+            <div class="button save">save</div>
+            <div class="button load">load</div>
+            <div class="button draw">draw</div>
+        </div>
+        <div class="horizontal">
+            <input type="checkbox" id="auto-redraw" tabindex="-1">
+            <span class="vertical">
+                <div>Автоматически перерисовывать изображение</div>
+                <div>при изменении экрана</div>
+            </span>
+        </div>
+        <div class="horizontal">
+            <input type="checkbox" id="auto-randomize" tabindex="-1">
+            <span class="vertical">
+                <div>Автоматически перерисовывать изображение</div>
+                <div>при рандомизации дерева</div>
+            </span>
+        </div>
+        <div class="horizontal">
+            <div class="button copy">copy</div>
+            <div class="button paste">paste</div>
+            <div class="button print">list of trees</div>
+            <div class="button del">delete tree from list</div>
+        </div>
+    </div>
+
+    <script src="scripts/TreeDrawing.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
